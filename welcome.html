@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz - Welcome</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            height : 100%;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: pink;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            max-width : 1000px;
+            width : 90%;
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom : 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom : 20px;
+            line-height: 1.6;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ff5722;
+            border: none;
+            border-radius: 25px;
+            color: black;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background-color: #e64a19;
+            transform: scale(1.05);
+        }
+
+        /* Key benefits section */
+        .benefits {
+            display: flex;
+            justify-content: space-around;
+            margin-top : 40px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .benefit-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            width : 30%;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .benefit-item h3 {
+            font-size: 1.5em;
+            margin-bottom : 10px;
+        }
+
+        /* Quote section */
+        .quote-section {
+            margin-top : 40px;
+            animation: fadeIn 3.5s ease-in-out;
+        }
+
+        .quote {
+            font-style: italic;
+            font-weight:bolder;
+            font-size: 1.5em;
+            color: red;
+        }
+
+        .quote-author {
+            margin-top : 10px;
+            font-weight: bolder;
+            font-size: 1.2em;
+            color: red;
+        }
+
+        /* Quiz category cards */
+        .categories {
+            margin-top : 40px;
+            display: flex;
+            justify-content: space-around;
+            animation: fadeIn 4s ease-in-out;
+        }
+
+        .category-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            width : 28%;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+
+        .category-card h4 {
+            font-size: 1.5em;
+            margin-bottom : 10px;
+        }
+
+        .category-card p {
+            font-size: 1em;
+            color: black;
+        }
+
+        /* Footer section */
+        footer {
+            margin-top : 50px;
+            padding: 20px;
+            background-color: black;
+            text-align: center;
+            width : 100%;
+            color: #e0e0e0;
+            font-size: 1em;
+            animation: fadeIn 4.5s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Main content container -->
+    <div class="container">
+        <h1>Welcome to the Online Quiz!</h1>
+        <p>Get ready to challenge yourself, boost your knowledge, and have fun!</p>
+        <a href="Online Quiz.html" class="cta-button">Start Your Quiz</a>
+
+        <!-- Key Benefits Section -->
+        <div class="benefits">
+            <div class="benefit-item">
+                <h3>Improve Your Memory</h3>
+                <p>Quizzes help sharpen your brain and enhance recall abilities.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>Enhance Learning</h3>
+                <p>Test your knowledge and reinforce what you know.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>Challenge Yourself</h3>
+                <p>Push your limits with new and exciting questions every day.</p>
+            </div>
+        </div>
+
+        <!-- Quote Section -->
+        <div class="quote-section">
+            <p class="quote">"The beautiful thing about learning is that no one can take it away from you."</p>
+            <p class="quote-author">- B.B. King</p>
+        </div>
+
+        <!-- Quiz Category Cards Section -->
+        <div class="categories">
+            <div class="category-card">
+                <h4>General Knowledge</h4>
+                <p>Explore diverse topics and expand your world view.</p>
+            </div>
+            <div class="category-card">
+                <h4>Math</h4>
+                <p>Test your problem-solving skills with mathematical challenges.</p>
+            </div>
+            <div class="category-card">
+                <h4>Technology</h4>
+                <p>Stay updated with the latest trends in the tech world.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Online Quiz. All Rights Reserved.
+    </footer>
+</body>
+</html>

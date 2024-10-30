@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Online Quiz</title>
+    <link rel="stylesheet" href="temp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="animated-heading">Online Quiz</h1>
+        
+        <div id="startContainer" class="fade-in">
+            <form id="quizForm">
+                <div class="input-group">
+                    <label for="class">Select Class:</label>
+                    <select id="class" name="class" class="styled-select">
+                        <option value="class1">Class 1</option>
+                        <option value="class2">Class 2</option>
+                        <option value="class3">Class 3</option>
+                        <option value="class4">Class 4</option>
+                        <option value="class5">Class 5</option>
+                        <option value="class6">Class 6</option>
+                        <option value="class7">Class 7</option>
+                        <option value="class8">Class 8</option>
+                        <option value="class9">Class 9</option>
+                        <option value="class10">Class 10</option>
+                        <option value="class11">Class 11</option>
+                        <option value="class12">Class 12</option>
+                        <option value="engineering">Engineering</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="category">Select Category:</label>
+                    <select id="category" name="category" class="styled-select">
+                        <option value="math">Math</option>
+                        <option value="gk">General Knowledge</option>
+                        <option value="technology">Technology</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="start-btn">Start Quiz</button>
+            </form>
+        </div>
+
+        <div id="quizContainer" style="display: none;" class="quiz-section">
+            <div class="progress-bar">
+                <div id="progress" class="progress"></div>
+            </div>
+
+            <h2 id="question" class="quiz-question"></h2>
+            <div id="answers" class="answers-container"></div>
+
+            <button id="nextQuestion" style="display: none;" class="next-btn">Next Question</button>
+        </div>
+
+        <div id="resultContainer" style="display: none;" class="fade-in result-section">
+            <h2>Your Score: <span id="score"></span></h2>
+            <p id="feedback"></p>
+            <button onclick="window.location.reload()" class="restart-btn">Restart Quiz</button>
+        </div>
+    </div>
+
+    <audio id="correctSound" src="correct-6033.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="buzzer-or-wrong-answer-20582.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
