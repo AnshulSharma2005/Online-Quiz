@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, #ff6a00, #ee0979);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height : 100vh;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width : 380px;
+  text-align: center;
+  animation: slideIn 0.5s ease-out;
+}
+
+.signup-box h2 {
+  margin-bottom : 20px;
+  font-size: 32px;
+  color: #333;
+  font-weight: bold;
+}
+
+.input-group {
+  margin-bottom : 20px;
+  position: relative;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width : 100%;
+  padding: 15px;
+  margin-top : 8px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+  border-color: #ff6a00;
+  box-shadow: 0 0 10px rgba(255, 106, 0, 0.5);
+}
+
+input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover {
+  border-color: #ee0979;
+}
+
+.error-msg {
+  color: #e74c3c;
+  font-size: 12px;
+  display: none;
+  position: absolute;
+  bottom : -20px;
+  left : 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.error-msg.show {
+  display: inline;
+  opacity: 1;
+}
+
+.submit-btn {
+  width : 100%;
+  padding: 15px;
+  background-color: #ff6a00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #ee0979;
+  transform: scale(1.05);
+}
+
+.submit-btn:active {
+  transform: scale(1);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom : 20px;
+}
+
+.checkbox-group input {
+  margin-right : 10px;
+}
+
+.login-link {
+  margin-top : 20px;
+}
+
+.login-link a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

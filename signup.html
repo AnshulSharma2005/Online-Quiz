@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="signup-box form-section" id="signup-section">
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+      <div class="input-group">
+        <label for="signup-fullname">Full Name</label>
+        <input type="text" id="signup-fullname" name="fullname" placeholder="Enter your full name" required>
+      </div>
+      <div class="input-group">
+        <label for="signup-email">Email</label>
+        <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="input-group">
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" name="password" placeholder="Enter your password" required>
+      </div>
+      <div class="input-group">
+        <label for="signup-confirm-password">Confirm Password</label>
+        <input type="password" id="signup-confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+      </div>
+      <button type="submit" class="submit-btn">Sign up</button>
+    </form>
+    <p class="sign-link">Already have an account? <a href="login.html">Login</a></p>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCZV3tY2igAV7D7SjpWHkjeHH8DHGOrjGs",
+      authDomain: "online-quiz-78ecc.firebaseapp.com",
+      databaseURL: "https://online-quiz-78ecc-default-rtdb.firebaseio.com/",
+      projectId: "online-quiz-78ecc",
+      storageBucket: "online-quiz-78ecc.appspot.com",
+      messagingSenderId: "224756480031",
+      appId: "1:224756480031:web:d6cde62fda1c1702b3fd2a",
+      measurementId: "G-DJJHKFNVYF"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
+    function saveUserToFirebase(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      const fullName = document.getElementById("signup-fullname").value;
+
+      if (!email || !password || !fullName) {
+        alert("Please fill out all fields!");
+        return;
+      }
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          push(ref(db, "registered_users"), {
+            userid: user.uid,
+            email: user.email,
+            fullName: fullName,
+          })
+            .then(() => {
+              alert("Successfully Registered!");
+              location.href = "login.html";
+            })
+            .catch((error) => {
+              console.error("Error saving user to database:", error);
+            });
+        })
+        .catch((error) => {
+          alert(`Error: ${error.message}`);
+        });
+    }
+
+    document.getElementById("signup-form").addEventListener("submit", saveUserToFirebase);
+  </script>
+</body>
+</html>

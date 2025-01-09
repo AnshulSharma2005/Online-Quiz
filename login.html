@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-box form-section" id="login-section">
+    <h2 id="show-login">Login</h2>
+    <form id="login-form">
+      <div class="input-group">
+        <label for="login-email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        <small class="error-msg">Please enter a valid email address</small>
+      </div>
+      <div class="input-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        <small class="error-msg">Password is required</small>
+      </div>
+      <button type="submit" class="submit-btn" id="authenticateUser">Login</button>
+    </form>
+    <p class="sign-link">New Register? <a href="signup.html">Register here</a></p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="validation.js"></script>
+  <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js";
+      
+      const firebaseConfig = {
+        apiKey: "AIzaSyCZV3tY2igAV7D7SjpWHkjeHH8DHGOrjGs",
+        authDomain: "online-quiz-78ecc.firebaseapp.com",
+        databaseURL: "https://online-quiz-78ecc-default-rtdb.firebaseio.com/",
+        projectId: "online-quiz-78ecc",
+        storageBucket: "online-quiz-78ecc.firebasestorage.app",
+        messagingSenderId: "224756480031",
+        appId: "1:224756480031:web:d6cde62fda1c1702b3fd2a",
+        measurementId: "G-DJJHKFNVYF"
+      };
+      const app = initializeApp(firebaseConfig);
+
+      function authenticatefromfirebase(event) {
+          event.preventDefault();  // Prevent form from submitting normally
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          if (!email || !password) {
+              alert("Please fill in both email and password!");
+              return;
+          }
+
+          const auth = getAuth(app);
+          
+          signInWithEmailAndPassword(auth, email, password)
+              .then((userCredentials) => {
+                  const user = userCredentials.user;
+                  localStorage.setItem('loggedin_user_id', user.uid);
+                  localStorage.setItem('loggedin_user_email', user.email);
+                  setTimeout(() => {
+                      window.location.href = "Online Quiz.html";  // Redirect to welcome page
+                  }, 2000);  // Delay before redirecting (optional)
+              })
+              .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.error(`Error: ${errorMessage}`);
+                  alert("Failed to log in: " + errorMessage);
+              });
+      }
+
+      // Add event listener to the form to call authenticatefromfirebase on submit
+      document.getElementById("login-form").addEventListener("submit", authenticatefromfirebase);
+  </script>
+</body>
+</html>
